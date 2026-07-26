@@ -1,0 +1,8 @@
+plugins/github
+
+*.log
+
+plugins.json
+release-notes.json
+session.json
+

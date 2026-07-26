@@ -1,0 +1,7 @@
+#!/bin/sh
+# Use code --wait in VS Code / Cursor integrated terminals; otherwise use nvim
+if [ "$TERM_PROGRAM" = "vscode" ] || [ -n "$VSCODE_INJECTION" ]; then
+  exec code --wait "$@"
+else
+  exec nvim "$@"
+fi

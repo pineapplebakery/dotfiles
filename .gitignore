@@ -1,0 +1,14 @@
+coc/
+fish/
+bottom/
+cheat/
+gh/
+htop/
+uv/
+gcloud/
+
+*.mdb
+*.bak
+
+
+

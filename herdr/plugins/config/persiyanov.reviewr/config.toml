@@ -1,0 +1,6 @@
+# reviewr plugin config
+# https://github.com/persiyanov/herdr-reviewr
+
+# Open beside the focused pane as a right split (left/right layout).
+toggle_placement = "split"
+toggle_direction = "right"

@@ -1,0 +1,22 @@
+[core]
+    pager =
+    editor = ~/.config/git/git-editor
+    autocrlf = input
+    quotepath = false
+[fetch]
+    prune = true
+[pull]
+    rebase = true
+[submodule]
+    recurse = true
+[color]
+    ui = true
+[init]
+    defaultbranch = main
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[ghq]
+    root = ~/workspace/ghq
