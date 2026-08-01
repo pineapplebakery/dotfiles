@@ -235,4 +235,19 @@ shopt -u nullglob
 # Phase 2: home .tmux.conf -> repo tmux.conf
 link_or_adopt_tmux
 
+# Phase 3: Oh My Zsh + Powerlevel10k + plugins + ~/.zshrc / ~/.p10k.zsh
+zsh_install="${DOTFILES}/zsh/install.sh"
+if [[ -x "$zsh_install" ]]; then
+  log "--- zsh ---"
+  if [[ "$DRY_RUN" -eq 1 ]]; then
+    "$zsh_install" --dry-run
+  else
+    "$zsh_install"
+  fi
+elif [[ -f "$zsh_install" ]]; then
+  warn "zsh/install.sh is not executable; run: chmod +x zsh/install.sh"
+else
+  warn "zsh/install.sh not found; skipping zsh setup"
+fi
+
 log "done."
