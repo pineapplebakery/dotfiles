@@ -59,6 +59,9 @@ Tracked files under `zsh/`:
 | `zshrc` | Oh My Zsh config (theme + plugins) |
 | `p10k.zsh` | Powerlevel10k prompt settings |
 | `install.sh` | Automated bootstrap |
+| `conf.d/*.zsh` | Modular fragments sourced at the end of `zshrc` (sorted by name) |
+
+`conf.d/99-local.zsh` is gitignored for machine-local overrides. Create it on each host as needed; it loads last and can override earlier fragments (e.g. `01-env.zsh`).
 
 Plugins and Oh My Zsh itself stay under `~/.oh-my-zsh` (not in this repo).
 

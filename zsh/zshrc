@@ -129,20 +129,15 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+typeset -U path
 
-export PATH=$HOME/.local/bin:$HOME/go/bin:$PATH
-export EDITOR=nvim
-
-alias vim='nvim'
-alias ls='eza --icons --git'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-peco-select-history() {
-    BUFFER=$(history -n 1 | tac | peco)
-    CURSOR=$#BUFFER
-    zle clear-screen
+# Modular fragments under conf.d/ (lexicographic order: 01-env.zsh … 99-local.zsh).
+# 99-local.zsh is gitignored for machine-local overrides.
+() {
+  local conf conf_d="${${(%):-%x}:A:h}/conf.d"
+  [[ -d $conf_d ]] || return
+  for conf in $conf_d/*.zsh(N); do
+    source $conf
+  done
 }
-zle -N peco-select-history
-bindkey '^R' peco-select-history
 
-eval "$(zoxide init zsh)"
