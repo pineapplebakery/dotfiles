@@ -1,5 +1,5 @@
 _python_m_module_complete() {
-  # python -m <ここ> のときだけ
+  # Only complete after `python -m`
   [[ "${words[CURRENT-1]}" == "-m" ]] || return 1
 
   local py="${words[CURRENT-2]:t}"
@@ -11,7 +11,7 @@ _python_m_module_complete() {
   local -a modules
   local f mod
 
-  # カレントディレクトリ以下の .py を全部 Python module 名に変換
+  # Convert .py files under the current directory into Python module names
   for f in **/*.py(N); do
     [[ "$f" == */__pycache__/* ]] && continue
 
