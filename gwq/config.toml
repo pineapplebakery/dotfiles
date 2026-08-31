@@ -18,4 +18,4 @@ tilde_home = true
 
 [worktree]
 auto_mkdir = true
-basedir = '~/workspace/dev'
+basedir = '~/workspace/ghq'
