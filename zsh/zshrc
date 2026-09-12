@@ -142,3 +142,5 @@ typeset -U path
   done
 }
 
+export PATH=$(printf %s "$PATH" | awk -v RS=':' -v ORS=':' '!seen[$0]++' | sed 's/:$//')
+
