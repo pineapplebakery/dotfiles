@@ -24,4 +24,7 @@ if [ -f /etc/os-release ] && grep -qi '^ID=ubuntu' /etc/os-release; then
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 fi
 
-export PATH=$PATH:/usr/lib/wsl/lib
+# WSL interop libraries (GPU, etc.)
+if grep -qi microsoft /proc/version 2>/dev/null; then
+  export PATH=$PATH:/usr/lib/wsl/lib
+fi
