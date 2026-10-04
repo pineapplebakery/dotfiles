@@ -334,7 +334,8 @@ type = "popup"
 description = "Lazygit"
 width = "90%"
 height = "90%"
-command = "lazygit"
+# Load the user's login-shell PATH and open at the focused pane's cwd.
+command = '''cd "${HERDR_ACTIVE_PANE_CWD:-.}" && exec "${SHELL:-/bin/sh}" -lc 'exec lazygit''''
 
 [[keys.command]]
 key = "prefix+ctrl+r"
