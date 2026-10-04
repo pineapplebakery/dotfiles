@@ -337,12 +337,16 @@ command = "lazygit"
 
 [[keys.command]]
 key = "prefix+ctrl+r"
-type = "plugin_action"
-command = "persiyanov.reviewr.toggle"
-description = "toggle reviewr"
+type = "popup"
+command = 'exec python3 "$HOME/.config/herdr/scripts/open-diff.py" reviewr'
+description = "reviewr: r = right, b/Enter = below (Esc cancels)"
+width = 48
+height = 5
 
 [[keys.command]]
 key = "prefix+ctrl+h"
-type = "plugin_action"
-command = "hunk.diff.worktree-split"
-description = "Hunk worktree diff (right split)"
+type = "popup"
+command = 'exec python3 "$HOME/.config/herdr/scripts/open-diff.py" hunk'
+description = "Hunk: r = right, b/Enter = below (Esc cancels)"
+width = 48
+height = 5
