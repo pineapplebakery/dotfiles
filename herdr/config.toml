@@ -325,7 +325,8 @@ description = "Neovim"
 width = "90%"
 height = "90%"
 # Open at the focused pane's cwd (netrw / oil / etc. for ".").
-command = 'cd "${HERDR_ACTIVE_PANE_CWD:-.}" && exec nvim .'
+# Load the user's login-shell PATH (e.g. Homebrew on macOS) before launching.
+command = '''cd "${HERDR_ACTIVE_PANE_CWD:-.}" && exec "${SHELL:-/bin/sh}" -lc 'exec nvim .''''
 
 [[keys.command]]
 key = "prefix+ctrl+l"
