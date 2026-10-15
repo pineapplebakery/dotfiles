@@ -18,8 +18,12 @@ bindkey '^R' peco-select-history
 
 eval "$(zoxide init zsh)"
 
-# nvm (Ubuntu) — needed for npm
+# Ubuntu: nvm (npm), and sudoedit/visudo.
+# sudoedit/visudo only accept an absolute SUDO_EDITOR. A bare name is
+# ignored and /usr/bin/editor (nano) is used. macOS sudo honors EDITOR.
 if [ -f /etc/os-release ] && grep -qi '^ID=ubuntu' /etc/os-release; then
+  _nvim="$(command -v nvim)" && export SUDO_EDITOR="$_nvim"
+  unset _nvim
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 fi
